@@ -1,22 +1,22 @@
 pub mod proto {
-    pub mod google {
-        pub mod protobuf {
+    mod google {
+        mod protobuf {
             tonic::include_proto!("google.protobuf");
         }
-        pub mod api {
+        mod api {
             tonic::include_proto!("google.api");
         }
     }
 
-    pub mod gogoproto {
+    mod gogoproto {
         tonic::include_proto!("gogoproto");
     }
 
-    pub mod authpb {
+    mod authpb {
         tonic::include_proto!("authpb");
     }
 
-    pub mod mvccpb {
+    mod mvccpb {
         tonic::include_proto!("mvccpb");
     }
 
@@ -24,8 +24,7 @@ pub mod proto {
         tonic::include_proto!("etcdserverpb");
     }
 
-    pub mod election {
-
+    pub mod electionpb {
         pub use crate::proto::etcdserverpb::{
             AlarmRequest, AlarmResponse, AuthDisableRequest, AuthDisableResponse,
             AuthEnableRequest, AuthEnableResponse, AuthRoleAddRequest, AuthRoleAddResponse,
@@ -53,8 +52,8 @@ pub mod proto {
         tonic::include_proto!("v3electionpb");
     }
 
-    pub mod lock {
-        pub use crate::proto::election::{
+    pub mod lockpb {
+        pub use crate::proto::electionpb::{
             CampaignRequest, CampaignResponse, LeaderRequest, LeaderResponse, ProclaimRequest,
             ProclaimResponse, ResignRequest, ResignResponse,
         };
