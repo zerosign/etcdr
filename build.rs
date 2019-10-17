@@ -1,5 +1,16 @@
 fn main() {
-    tonic_build::compile_protos("proto/etcdserverpb/rpc.proto").unwrap();
-    tonic_build::compile_protos("proto/mvccpb/kv.proto").unwrap();
-    tonic_build::compile_protos("proto/v3lockpb/v3lock.proto").unwrap();
+    let proto_files = [
+        "proto/etcd/etcdserver/etcdserverpb/rpc.proto",
+        "proto/etcd/v3election/v3electionpb/v3election.proto",
+        "proto/etcd/v3lock/v3lockpb/v3lock.proto",
+    ];
+
+    let include_paths = ["proto"];
+
+    tonic_build::configure()
+        .build_client(true)
+        .build_server(false)
+        .format(true)
+        .compile(&proto_files, &include_paths)
+        .unwrap();
 }
