@@ -22,9 +22,67 @@ pub mod proto {
 
     pub mod etcdserverpb {
         tonic::include_proto!("etcdserverpb");
-        // TODO: @zerosign doesn't work, it seems I need to reexport etcdserverpb as super crates
-        //       this has something to do that module can't be extended outside of its first definition
+    }
+
+    pub mod election {
+
+        pub use crate::proto::etcdserverpb::{
+            AlarmRequest, AlarmResponse, AuthDisableRequest, AuthDisableResponse,
+            AuthEnableRequest, AuthEnableResponse, AuthRoleAddRequest, AuthRoleAddResponse,
+            AuthRoleDeleteRequest, AuthRoleDeleteResponse, AuthRoleGetRequest, AuthRoleGetResponse,
+            AuthRoleGrantPermissionRequest, AuthRoleGrantPermissionResponse, AuthRoleListRequest,
+            AuthRoleListResponse, AuthRoleRevokePermissionRequest,
+            AuthRoleRevokePermissionResponse, AuthUserAddRequest, AuthUserAddResponse,
+            AuthUserChangePasswordRequest, AuthUserChangePasswordResponse, AuthUserDeleteRequest,
+            AuthUserDeleteResponse, AuthUserGetRequest, AuthUserGetResponse,
+            AuthUserGrantRoleRequest, AuthUserGrantRoleResponse, AuthUserListRequest,
+            AuthUserListResponse, AuthUserRevokeRoleRequest, AuthUserRevokeRoleResponse,
+            AuthenticateRequest, AuthenticateResponse, CompactionRequest, CompactionResponse,
+            DefragmentRequest, DefragmentResponse, DeleteRangeRequest, DeleteRangeResponse,
+            HashKvRequest, HashKvResponse, HashRequest, HashResponse, LeaseGrantRequest,
+            LeaseGrantResponse, LeaseKeepAliveRequest, LeaseKeepAliveResponse, LeaseLeasesRequest,
+            LeaseLeasesResponse, LeaseRevokeRequest, LeaseRevokeResponse, LeaseTimeToLiveRequest,
+            LeaseTimeToLiveResponse, MemberAddRequest, MemberAddResponse, MemberListRequest,
+            MemberListResponse, MemberPromoteRequest, MemberPromoteResponse, MemberRemoveRequest,
+            MemberRemoveResponse, MemberUpdateRequest, MemberUpdateResponse, MoveLeaderRequest,
+            MoveLeaderResponse, PutRequest, PutResponse, RangeRequest, RangeResponse,
+            SnapshotRequest, SnapshotResponse, StatusRequest, StatusResponse, TxnRequest,
+            TxnResponse, WatchRequest, WatchResponse,
+        };
+
         tonic::include_proto!("v3electionpb");
+    }
+
+    pub mod lock {
+        pub use crate::proto::election::{
+            CampaignRequest, CampaignResponse, LeaderRequest, LeaderResponse, ProclaimRequest,
+            ProclaimResponse, ResignRequest, ResignResponse,
+        };
+
+        pub use crate::proto::etcdserverpb::{
+            AlarmRequest, AlarmResponse, AuthDisableRequest, AuthDisableResponse,
+            AuthEnableRequest, AuthEnableResponse, AuthRoleAddRequest, AuthRoleAddResponse,
+            AuthRoleDeleteRequest, AuthRoleDeleteResponse, AuthRoleGetRequest, AuthRoleGetResponse,
+            AuthRoleGrantPermissionRequest, AuthRoleGrantPermissionResponse, AuthRoleListRequest,
+            AuthRoleListResponse, AuthRoleRevokePermissionRequest,
+            AuthRoleRevokePermissionResponse, AuthUserAddRequest, AuthUserAddResponse,
+            AuthUserChangePasswordRequest, AuthUserChangePasswordResponse, AuthUserDeleteRequest,
+            AuthUserDeleteResponse, AuthUserGetRequest, AuthUserGetResponse,
+            AuthUserGrantRoleRequest, AuthUserGrantRoleResponse, AuthUserListRequest,
+            AuthUserListResponse, AuthUserRevokeRoleRequest, AuthUserRevokeRoleResponse,
+            AuthenticateRequest, AuthenticateResponse, CompactionRequest, CompactionResponse,
+            DefragmentRequest, DefragmentResponse, DeleteRangeRequest, DeleteRangeResponse,
+            HashKvRequest, HashKvResponse, HashRequest, HashResponse, LeaseGrantRequest,
+            LeaseGrantResponse, LeaseKeepAliveRequest, LeaseKeepAliveResponse, LeaseLeasesRequest,
+            LeaseLeasesResponse, LeaseRevokeRequest, LeaseRevokeResponse, LeaseTimeToLiveRequest,
+            LeaseTimeToLiveResponse, MemberAddRequest, MemberAddResponse, MemberListRequest,
+            MemberListResponse, MemberPromoteRequest, MemberPromoteResponse, MemberRemoveRequest,
+            MemberRemoveResponse, MemberUpdateRequest, MemberUpdateResponse, MoveLeaderRequest,
+            MoveLeaderResponse, PutRequest, PutResponse, RangeRequest, RangeResponse,
+            SnapshotRequest, SnapshotResponse, StatusRequest, StatusResponse, TxnRequest,
+            TxnResponse, WatchRequest, WatchResponse,
+        };
+
         tonic::include_proto!("v3lockpb");
     }
 }
